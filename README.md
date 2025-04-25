@@ -1,20 +1,28 @@
-# Projeto Linux PB Compass Uol
+# Projeto Linux PB
 
 ## Índice
 
-1. [Configuração de Testes](#configuracao-de-testes)
+1. [Configuração do Ambiente](#configuracao-do-ambiente)
+2. [Instalação do Nginx](#instalacao-do-nginx)
+3. [Script de Monitoramento + Webhook](#script-de-monitoramento-com-webhook)
+4. [Configuração de Testes](#configuracao-de-testes)
 
-## Configuração do Ambiente
+## Configurando Ambiente
 
-### Download da ISO do Ubuntu-server
+Faça o download da ISO do Ubuntu-server LTS em:
+[Get Ubuntu Server](https://ubuntu.com/download/server)
 
-### Instalação do Ubuntu-server no VirtualBox
+### Criando VM
 
-## Instalação do Nginx
+### Instalando o Ubuntu Server
 
-## Script de Monitoramento + Webhook
+## Instalando Nginx
 
-## Configuração de Testes
+## Criando script e webhook
+
+## Criando página web personalizada
+
+## Testando Projeto
 
 ### VirtualBox Port Forwarding
 
