@@ -1,5 +1,9 @@
 # Projeto Linux PB Compass Uol
 
+## Índice
+
+1. [Configuração de Testes](#configuracao-de-testes)
+
 ## Configuração do Ambiente
 
 ### Download da ISO do Ubuntu-server
@@ -14,6 +18,6 @@
 
 ### VirtualBox Port Forwarding
 
-- Localhost: 8080 -> 80
-- SSH: 2222 -> 22
+- Localhost: 8080:80
+- SSH: 2222:22
 
