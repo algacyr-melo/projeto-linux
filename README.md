@@ -6,7 +6,8 @@
 2. [Instalação VM](#instalacao-vm)
 3. [Instalação Nginx](#instalacao-nginx)
 4. [Customização do Index](#custom-index)
-5. [Monitoramento](#monitoramento)
+5. [Variáveis de Ambiente](#variaveis-ambiente)
+6. [Monitoramento](#monitoramento)
     - [Script de Verificação](#script-verificacao)
     - [Configuração do Cronjob](#config-cron)
     - [Criação de Logs](#gestao-logs)
@@ -71,6 +72,17 @@ _Links oficiais para download:_
     ```bash
     sudo systemctl restart nginx
     ```
+
+## Variáveis de Ambiente <a name="variaveis-ambiente"></a>
+
+### Arquivo `.env`
+Crie um arquivo `.env` na raíz do projeto para armazenar a URL do
+webhook do Discord:
+
+```bash
+# /home/almelo/pb-linux/.env
+DISCORD_WEBHOOK_URL="sua_url_aqui"
+```
 
 ## Monitoramento <a name="monitoramento"></a>
 
