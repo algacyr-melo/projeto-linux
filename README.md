@@ -6,9 +6,12 @@
 2. [Instalação VM](#instalacao-vm)
 3. [Instalação Nginx](#instalacao-nginx)
 4. [Customização do Index](#custom-index)
-5. [Verificação de Disponibilidade do Site](#verificacao-de-disponibilidade-do-site)
-6. [Configuração do Cronjob](#config-cron)
-7. [Criação do Arquivo de Log](#criacao-log)
+5. [Monitoramento](#monitoramento)
+    - [Script de Verificação](#script-verificacao)
+    - [Configuração do Cronjob](#config-cron)
+    - [Criação de Logs](#gestao-logs)
+
+---
 
 ## Pré-requisitos <a name="pre-requisitos"></a>
 
@@ -19,7 +22,7 @@ _Links oficiais para download:_
 - [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
 - [https://ubuntu.com/download/server](https://ubuntu.com/download/server)
 
-## Instalação VM <a name="instalacao-vm"></a>
+## Instalação da VM <a name="instalacao-vm"></a>
 
 ### Configurações da VM no VirtualBox:
 - **Sistema Operacional:**
@@ -30,7 +33,7 @@ _Links oficiais para download:_
   - CPUs: 1
   - Armazenamento: 25 GB (alocação dinâmica)
 
-## Instalação Nginx <a name="instalacao-nginx"></a>
+## Instalação do Nginx <a name="instalacao-nginx"></a>
 
 1. Atualização do sistema e instalação:
     ```bash
@@ -69,10 +72,9 @@ _Links oficiais para download:_
     sudo systemctl restart nginx
     ```
 
-## Verificação de Disponibilidade do Site <a name="verificacao-de-disponibilidade-do-site"></a>
+## Monitoramento <a name="monitoramento"></a>
 
-### Script `check_site.sh`
-
+### Script de Verificação `check_site.sh` <a name="script-verificacao"></a>
 ```bash
 #!/bin/bash
 
@@ -116,7 +118,7 @@ log "SUCCESS: Received 200 OK"
 exit 0
 ```
 
-## Configuração do Cronjob <a name="config-cron"></a>
+### Configuração do Cronjob <a name="config-cron"></a>
 
 1. **Editar arquivo de cron do usuário:**
     ```bash
@@ -133,7 +135,7 @@ exit 0
     crontab -l
     ```
 
-## Criação do Arquivo de Log <a name="criacao-log"></a>
+### Gestão de Logs <a name="gestao-logs"></a>
 
 1. **Criar Diretório com Arquivo de Log:**
     ```bash
@@ -150,4 +152,3 @@ exit 0
     ```bash
     tail -f /var/log/pb-linux/check_site.log
     ```
-
