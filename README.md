@@ -5,8 +5,6 @@
 1. [Pré-requisitos](#pre-requisitos)
 2. [Instalação VM](#instalacao-vm)
 3. [Instalação Nginx](#instalacao-nginx)
-4. [Script de Monitoramento](#script-de-monitoramento)
-5. [Discord Webhook](#discord-webhook)
 
 ## Pré-requisitos <a name="pre-requisitos"></a>
 
@@ -37,3 +35,18 @@ sudo apt install nginx -y
 # Verificar se o nginx está ativo
 sudo systemctl status nginx
 ```
+
+## Verificação da Disponibilidade do Site <a name="verificacao-da-disponibilidade-do-site"></a>
+
+**Script:**
+- ![check_site.sh](check_site.sh)
+
+```bash
+# Editar arquivo de configuração do cron
+crontab -e
+```
+
+```bash
+# * * * * * /home/almelo/bin/check_site.sh > /var/log/mysite.log
+```
+
