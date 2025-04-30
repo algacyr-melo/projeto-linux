@@ -16,7 +16,7 @@
 ## Pré-requisitos <a name="pre-requisitos"></a>
 
 - VirtualBox
-- ISO Ubuntu Server
+- ISO do Ubuntu Server
 
 _Links oficiais para download:_
 - [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
