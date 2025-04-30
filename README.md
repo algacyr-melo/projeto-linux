@@ -14,8 +14,8 @@
 - ISO Ubuntu Server
 
 _Links oficiais para download:_
-[https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
-[https://ubuntu.com/download/server](https://ubuntu.com/download/server)
+- [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
+- [https://ubuntu.com/download/server](https://ubuntu.com/download/server)
 
 ## Instalação VM <a name="instalacao-vm"></a>
 
