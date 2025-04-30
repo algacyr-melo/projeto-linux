@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Export env variable from .env
+# Export da URL do webhook pro ambiente
 source $HOME/project/.env
 
 log() {
@@ -14,29 +14,27 @@ execute_webhook() {
         "$DISCORD_WEBHOOK_URL"
 }
 
-# Check Nginx service status
+# Verificação do serviço Nginx
 if [ $(systemctl is-active nginx.service) = "inactive" ]; then
     log "ERROR: Nginx service is DOWN"
     execute_webhook
     exit 1
 fi
 
-# Did we get a response from localhost:80?
+# Teste de conexão HTTP
 http_code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost)
 curl_status="$?"
+
 if [ "$curl_status" -ne 0 ]; then
     log "ERROR: Curl exited with status $curl_status"
     exit 2
 fi
 
-# Did we get status 200 OK?
 if [ "$http_code" != "200" ]; then
-    log "ERROR: Unexpected HTTP code: $http_code"
+    log "ERROR: Received HTTP code: $http_code"
     execute_webhook
     exit 3
 fi
 
 log "SUCCESS: Received 200 OK"
 exit 0
-
-# vim: ts=4 sts=4 sw=4 et
