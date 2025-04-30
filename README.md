@@ -2,30 +2,38 @@
 
 ## Índice
 
-1. [Configuração do Ambiente](#configuracao-do-ambiente)
-2. [Instalação do Nginx](#instalacao-do-nginx)
-3. [Script de Monitoramento + Webhook](#script-de-monitoramento-com-webhook)
-4. [Configuração de Testes](#configuracao-de-testes)
+1. [Pré-requisitos](#pre-requisitos)
+2. [Instalação VM](#instalacao-vm)
+3. [Instalação Nginx](#instalacao-nginx)
+4. [Script de Monitoramento](#script-de-monitoramento)
+5. [Discord Webhook](#discord-webhook)
 
-## Configurando Ambiente
+## Pré-requisitos <a name="pre-requisitos"></a>
 
-Faça o download da ISO do Ubuntu-server LTS em:
-[Get Ubuntu Server](https://ubuntu.com/download/server)
+- VirtualBox
+- ISO Ubuntu Server
 
-### Criando VM
+_Links oficiais para download:_
+[https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads)
+[https://ubuntu.com/download/server](https://ubuntu.com/download/server)
 
-### Instalando o Ubuntu Server
+## Instalação VM <a name="instalacao-vm"></a>
 
-## Instalando Nginx
+### Configurações da VM no VirtualBox:
+- **Sistema Operacional:**
+  - Tipo: Linux
+  - Versão: Ubuntu (64-bit)
+- **Hardware:**
+  - Memória Base: 2048 MB
+  - CPUs: 1
+  - Armazenamento: 25 GB (Alocação Dinâmica)
 
-## Criando script e webhook
+## Instalação Nginx <a name="instalacao-nginx"></a>
 
-## Criando página web personalizada
+```bash
+sudo apt update && apt upgrade -y
+sudo apt install nginx -y
 
-## Testando Projeto
-
-### VirtualBox Port Forwarding
-
-- Localhost: 8080:80
-- SSH: 2222:22
-
+# Verificar se o nginx está ativo
+sudo systemctl status nginx
+```
