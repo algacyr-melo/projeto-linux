@@ -5,6 +5,10 @@
 1. [Pré-requisitos](#pre-requisitos)
 2. [Instalação VM](#instalacao-vm)
 3. [Instalação Nginx](#instalacao-nginx)
+4. [Customização do Index](#custom-index)
+5. [Verificação de Disponibilidade do Site](#verificacao-de-disponibilidade-do-site)
+6. [Configuração do Cronjob](#config-cron)
+7. [Criação do Arquivo de Log](#criacao-log)
 
 ## Pré-requisitos <a name="pre-requisitos"></a>
 
@@ -39,7 +43,7 @@ _Links oficiais para download:_
     sudo systemctl status nginx
     ```
 
-## Alteração da Página Padrão do Nginx<a name="custom-index"></a>
+## Customização do Index <a name="custom-index"></a>
 
 1. **Criar Cópia do Arquivo Padrão:**
     ```bash
