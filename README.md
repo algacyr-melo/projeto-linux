@@ -95,7 +95,7 @@ chmod 600 .env
 ```bash
 #!/bin/bash
 
-# export da URL do webhook pro ambiente
+# Export da URL do webhook pro ambiente
 source /home/algacyr/linux-pb/.env
 
 log() {
@@ -103,25 +103,25 @@ log() {
 }
 
 execute_webhook() {
-    alert_msg="[$(date)] ALERT: Site unavailable at localhost"
-    curl -X POST -H "Content-Type: application/json" \
+    alert_msg="[$(date)] ALERT: Site Unavailable at Localhost"
+    curl -s -o /dev/null -X POST -H "Content-Type: application/json" \
         -d "{\"content\": \"$alert_msg\"}" \
         "$DISCORD_WEBHOOK_URL"
 }
 
-# verificação do serviço Nginx
+# Verificação do serviço Nginx
 if [ $(systemctl is-active nginx.service) = "inactive" ]; then
-    log "ERROR: Nginx service is DOWN"
+    log "ERROR: Nginx Service is DOWN"
     execute_webhook
     exit 1
 fi
 
-# teste de conexão HTTP
-http_code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost)
+# Teste de conexão HTTP
+http_code=$(curl -sS -o /dev/null -w "%{http_code}" http://localhost)
 curl_status="$?"
 
 if [ "$curl_status" -ne 0 ]; then
-    log "ERROR: Curl exited with status $curl_status"
+    log "ERROR: Curl Exited with Status $curl_status"
     exit 2
 fi
 
