@@ -84,8 +84,8 @@ DISCORD_WEBHOOK_URL="sua_url_aqui"
 ```
 
 ```bash
-# dá permissão de escrita e leitura apenas
-# para o dono do arquivo
+# para dar permissão de escrita e leitura apenas
+# para o dono do arquivo execute o comando:
 chmod 600 .env
 ```
 
