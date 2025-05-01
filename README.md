@@ -51,7 +51,9 @@ _Links oficiais para download:_
 
 1. **Criar Cópia do Arquivo Padrão:**
     ```bash
-    cp /var/www/html/index.nginx-debian.html /var/www/html/index.html
+    # navegue até o diretório /var/www/html
+    sudo cp index.nginx-debian.html index.html
+    sudo chown algacyr:algacyr index.html
     ```
 
 2. **Editar Conteúdo do Arquivo:**
@@ -60,17 +62,14 @@ _Links oficiais para download:_
     <html>
     <head>
         <title>Linux PB</title>
+        <style>
+           ...
+        </style>
     </head>
     <body>
-        <h1>Servidor Configurado com Sucesso! 🐧</h1>
-        <footer>Projeto de Algacyr Melo</footer>
+        <h1>Servidor Configurado com Sucesso!</h1>
     </body>
     </html>
-    ```
-
-3. **Reiniciar Nginx:**
-    ```bash
-    sudo systemctl restart nginx
     ```
 
 ## Variáveis de Ambiente <a name="variaveis-ambiente"></a>
@@ -79,9 +78,15 @@ _Links oficiais para download:_
 Crie um arquivo `.env` na raíz do projeto para armazenar a URL do
 webhook do Discord:
 
-```bash
-# /home/almelo/pb-linux/.env
+```.env
+# ~/linux-pb/.env
 DISCORD_WEBHOOK_URL="sua_url_aqui"
+```
+
+```bash
+# dá permissão de escrita e leitura apenas
+# para o dono do arquivo
+chmod 600 .env
 ```
 
 ## Monitoramento <a name="monitoramento"></a>
@@ -90,8 +95,8 @@ DISCORD_WEBHOOK_URL="sua_url_aqui"
 ```bash
 #!/bin/bash
 
-# Export da URL do webhook pro ambiente
-source $HOME/project/.env
+# export da URL do webhook pro ambiente
+source /home/algacyr/linux-pb/.env
 
 log() {
     echo "[$(date)] $1"
@@ -104,14 +109,14 @@ execute_webhook() {
         "$DISCORD_WEBHOOK_URL"
 }
 
-# Verificação do serviço Nginx
+# verificação do serviço Nginx
 if [ $(systemctl is-active nginx.service) = "inactive" ]; then
     log "ERROR: Nginx service is DOWN"
     execute_webhook
     exit 1
 fi
 
-# Teste de conexão HTTP
+# teste de conexão HTTP
 http_code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost)
 curl_status="$?"
 
@@ -130,6 +135,25 @@ log "SUCCESS: Received 200 OK"
 exit 0
 ```
 
+### Gestão de Logs <a name="gestao-logs"></a>
+
+1. **Criar Diretório com Arquivo de Log:**
+    ```bash
+    # Navegue até o diretório /var/log
+    sudo mkdir linux-pb
+    sudo touch linux-pb/check_site.log
+    ```
+
+2. **Ajustar Permissões:**
+    ```bash
+    sudo chown -R algacyr:algacyr linux-pb
+    ```
+
+3. **Verificar Logs em Tempo Real:**
+    ```bash
+    tail -f /var/log/linux-pb/check_site.log
+    ```
+
 ### Configuração do Cronjob <a name="config-cron"></a>
 
 1. **Editar arquivo de cron do usuário:**
@@ -139,7 +163,7 @@ exit 0
 
 2. **Configurar para execução a cada 1 minuto:**
     ```cron
-    * * * * * /home/almelo/pb-linux/check_site.sh >> /var/log/pb-linux/check_site.log 2>&1
+    * * * * * /home/almelo/linux-pb/check_site.sh >> /var/log/linux-pb/check_site.log 2>&1
     ```
 
 3. **Verificar Agendamento:**
@@ -147,20 +171,3 @@ exit 0
     crontab -l
     ```
 
-### Gestão de Logs <a name="gestao-logs"></a>
-
-1. **Criar Diretório com Arquivo de Log:**
-    ```bash
-    sudo mkdir /var/log/pb-linux
-    sudo touch /var/log/pb-linux/check_site.log
-    ```
-
-2. **Ajustar Permissões:**
-    ```bash
-    sudo chown -R almelo:almelo /var/log/pb-linux
-    ```
-
-3. **Verificar Logs em Tempo Real:**
-    ```bash
-    tail -f /var/log/pb-linux/check_site.log
-    ```
